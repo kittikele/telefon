@@ -1,5 +1,8 @@
 f = open('hivas.txt', 'rt', encoding='utf-8')
 
+def mpbe(h, m, s):
+    return ((h * 60) + m) * 60 + s
+
 stat = {}
 for sor in f:
     tmp = sor.strip().split(' ')
