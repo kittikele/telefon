@@ -18,12 +18,18 @@ print("3. feldat")
 for k,v in stat.items():
     print(k,"óra", v, "hívás")
 
+print('4. feladat')
 mpszamlalo = 0
 for i in masodpercek:
     if i > mpszamlalo:
         mpszamlalo = i
 hely = masodpercek.index(mpszamlalo) + 1
-print('4. feladat')
 print(f'A leghosszabb ideig vonalban lévő hívó {hely}. sorban szerepel,')
 print(f'A hívás hossza: {mpszamlalo} másodperc.')
 
+print('5. feladat')
+idopont = input('Adjon meg egy időpontot! (óra perc másodperc)')
+ido = idopont.split(' ')
+while int(ido[0]) < 8 or int(ido[0]) > 12:
+    idopont = input('Adjon meg egy időpontot! (óra perc másodperc)')
+    ido = idopont.split(' ')
