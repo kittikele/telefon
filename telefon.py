@@ -4,6 +4,7 @@ def mpbe(h, m, s):
     return ((h * 60) + m) * 60 + s
 
 stat = {}
+masodpercek = []
 for sor in f:
     tmp = sor.strip().split(' ')
     keys = stat.keys()
@@ -11,14 +12,12 @@ for sor in f:
         stat[tmp[0]] += 1
     else:
         stat[tmp[0]] = 1
+    masodpercek.append((mpbe(int(tmp[3]),int(tmp[4]),int(tmp[5]))) - (mpbe(int(tmp[0]),int(tmp[1]),int(tmp[2]))))
+
 print("3. feldat")
 for k,v in stat.items():
     print(k,"óra", v, "hívás")
 
-masodpercek = []
-for sor in f:
-    tmp = sor.strip().split(' ')
-    masodpercek.append((mpbe(int(tmp[3]),int(tmp[4]),int(tmp[5]))) - (mpbe(int(tmp[0]),int(tmp[1]),int(tmp[2]))))
 mpszamlalo = 0
 for i in masodpercek:
     if i > mpszamlalo:
@@ -27,3 +26,4 @@ hely = masodpercek.index(mpszamlalo) + 1
 print('4. feladat')
 print(f'A leghosszabb ideig vonalban lévő hívó {hely}. sorban szerepel,')
 print(f'A hívás hossza: {mpszamlalo} másodperc.')
+
