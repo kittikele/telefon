@@ -5,6 +5,8 @@ def mpbe(h, m, s):
 
 stat = {}
 masodpercek = []
+munkaido_hivasok = []
+beszelok = []
 for sor in f:
     tmp = sor.strip().split(' ')
     keys = stat.keys()
@@ -13,6 +15,8 @@ for sor in f:
     else:
         stat[tmp[0]] = 1
     masodpercek.append((mpbe(int(tmp[3]),int(tmp[4]),int(tmp[5]))) - (mpbe(int(tmp[0]),int(tmp[1]),int(tmp[2]))))
+    if int(tmp[3]) >= 8 and int(tmp[0]) < 12:
+        munkaido_hivasok.append(tmp)
 
 print("3. feldat")
 for k,v in stat.items():
@@ -33,3 +37,11 @@ ido = idopont.split(' ')
 while int(ido[0]) < 8 or int(ido[0]) > 12:
     idopont = input('Adjon meg egy időpontot! (óra perc másodperc)')
     ido = idopont.split(' ')
+
+beszelok.append(munkaido_hivasok[0])
+for i in range(1, len(munkaido_hivasok)):
+    
+
+
+print('temp', munkaido_hivasok)
+print('beszel', beszelok)
