@@ -44,11 +44,17 @@ eppen_hivasba_varakozok = []
 for i in range(len(munkaido_hivasok)):
     if mpbe(int(ido[0]), int(ido[1]), int(ido[2])) > mpbe(int(munkaido_hivasok[i][0]), int(munkaido_hivasok[i][1]), int(munkaido_hivasok[i][2])) and mpbe(int(ido[0]), int(ido[1]), int(ido[2])) < mpbe(int(munkaido_hivasok[i][3]), int(munkaido_hivasok[i][4]), int(munkaido_hivasok[i][5])):
         eppen_hivasba_varakozok.append(munkaido_hivasok[i])
-print(f'A várakozók száma: {len(eppen_hivasba_varakozok)-1} a beszélő a {eppen_hivasba_varakozok[0][6]}. hívó.')
-
+if len(eppen_hivasba_varakozok) != 0:
+    print(f'A várakozók száma: {len(eppen_hivasba_varakozok)-1} a beszélő a {eppen_hivasba_varakozok[0][6]}. hívó.')
+else:
+    print('Nem volt beszélő.')
 
 print('6. feladat')
-beszelok.append(munkaido_hivasok[0])
+teemp = munkaido_hivasok[0]
+teemp.append('8')
+teemp.append('0')
+teemp.append('0')
+beszelok.append(teemp)
 for i in range(1, len(munkaido_hivasok)):
     
     elozo_hivas = beszelok[-1]
@@ -61,3 +67,8 @@ for i in range(1, len(munkaido_hivasok)):
         
 print(f'Az utolsó telefonáló adatai a(z) {beszelok[-1][6]}. sorban vannak, {mpbe(int(beszelok[-1][7]), int(beszelok[-1][8]), int(beszelok[-1][9])) - mpbe(int(beszelok[-1][0]), int(beszelok[-1][1]), int(beszelok[-1][2]))} másodpercig várt.')
 
+ir = open('sikeres.txt', 'wt')
+for i in range(len(beszelok)):
+    ir.write(f'{beszelok[i][6]} {beszelok[i][7]} {beszelok[i][8]} {beszelok[i][9]} {beszelok[i][3]} {beszelok[i][4]} {beszelok[i][5]}\n')
+ir.close()
+f.close()
