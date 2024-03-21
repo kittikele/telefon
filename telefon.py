@@ -7,8 +7,11 @@ stat = {}
 masodpercek = []
 munkaido_hivasok = []
 beszelok = []
+sorszam = 1
 for sor in f:
     tmp = sor.strip().split(' ')
+    tmp.append(sorszam)
+    sorszam += 1
     keys = stat.keys()
     if tmp[0] in keys:
         stat[tmp[0]] += 1
@@ -41,7 +44,16 @@ while int(ido[0]) < 8 or int(ido[0]) > 12:
 beszelok.append(munkaido_hivasok[0])
 for i in range(1, len(munkaido_hivasok)):
     
-
+    elozo_hivas = beszelok[-1]
+    if mpbe(int(elozo_hivas[3]), int(elozo_hivas[4]), int(elozo_hivas[5])) < mpbe(int(munkaido_hivasok[i][3]), int(munkaido_hivasok[i][4]), int(munkaido_hivasok[i][5])):
+        temp = munkaido_hivasok[i]
+        temp.append(elozo_hivas[3])
+        temp.append(elozo_hivas[4])
+        temp.append(elozo_hivas[5])
+        beszelok.append(temp)
+        
+print('6. feladat')
+print(f'Az utolsó telefonáló adatai a(z) {beszelok[-1][6]}. sorban vannak, {mpbe(int(beszelok[-1][7]), int(beszelok[-1][8]), int(beszelok[-1][9])) - mpbe(int(beszelok[-1][0]), int(beszelok[-1][1]), int(beszelok[-1][2]))} másodpercig várt.')
 
 print('temp', munkaido_hivasok)
 print('beszel', beszelok)
